@@ -26,14 +26,7 @@ class Triangle {
         this.a = a;
         this.b = b;
         this.c = c;
-        this.isPainted = false;
-        this.paintingPhase = 0;
         Triangle.counter ++;
-    }
-    paint() {
-        if(!this.isPainted) {
-            //...
-        }
     }
     getPerimeter () {
         return this.a + this.b + this.c;
