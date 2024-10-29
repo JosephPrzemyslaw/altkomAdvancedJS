@@ -17,16 +17,16 @@ export class Rectangle {
         this.ctx.stroke();
         this.ctx.closePath();
     }
-    static getRandom(ctx, maxWidth, maxHeight) {
+    static getSkeleton(maxWidth, maxHeight) {
         const maxSize = 50;
 
-        return new Rectangle({
-            ctx,
+        return {
+            type: "rect",
             x: getRandomNo(maxWidth),
             y: getRandomNo(maxHeight),
             width: getRandomNo(maxSize),
             height: getRandomNo(maxSize),
             color: constants.allowedColors[Math.floor(Math.random() * constants.allowedColors.length)]
-    });
+        };
     }
 }

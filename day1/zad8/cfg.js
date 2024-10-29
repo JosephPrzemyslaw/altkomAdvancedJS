@@ -4,15 +4,20 @@ import { Rectangle } from "./Rectangle.js";
 export default {
     width: 800,
     height: 600,
-    figures: {
-        circle: {
-            create: Circle.getRandom,
+    target: "api",
+    figureTypeToClassNameMap: new Map([
+        ["circle", Circle],
+        ["rect", Rectangle]
+    ]),
+    figures: [{
+            type: "circle",
+            getSkel: Circle.getSkeleton,
             no: 100,
-        },
-        rect: {
-            create: Rectangle.getRandom,
+        },{
+            type: "rect",
+            getSkel: Rectangle.getSkeleton,
             no: 50,
-        },
-    },
+        }
+    ],
     mountingPoint: "mounting-point",
 }

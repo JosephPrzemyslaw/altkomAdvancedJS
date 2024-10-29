@@ -16,15 +16,15 @@ export class Circle {
         this.ctx.stroke();
         this.ctx.closePath();
     }
-    static getRandom(ctx, maxWidth, maxHeight) {
+    static getSkeleton(maxWidth, maxHeight) {
         const maxRadious = 30;
 
-        return new Circle({
-            ctx, // ctx: ctx
+        return {
+            type: "circle",
             x: getRandomNo(maxWidth),
             y: getRandomNo(maxHeight),
             radious: getRandomNo(maxRadious),
             color: constants.allowedColors[Math.floor(Math.random() * constants.allowedColors.length)]
-        });
+        };
     }
 }
