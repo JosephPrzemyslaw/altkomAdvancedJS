@@ -1,4 +1,5 @@
 import { getRandomNo } from "./common.js";
+import constants from "./constants.js";
 
 export class Circle {
     constructor({ctx, x, y, radious, color}) {
@@ -11,20 +12,19 @@ export class Circle {
     draw() {
         this.ctx.beginPath();
         this.ctx.strokeStyle = this.color;
-        this.ctx.arc(this.x,this.y,this.radious, 0, 2 * Math.PI);
+        this.ctx.arc(this.x, this.y, this.radious, 0, 2 * Math.PI);
         this.ctx.stroke();
         this.ctx.closePath();
     }
     static getRandom(ctx, maxWidth, maxHeight) {
         const maxRadious = 30;
-        const allowedColors = ["blue", "orange", "green", "Tomato", "MediumSeaGreen", "Violet"];
 
         return new Circle({
             ctx, // ctx: ctx
             x: getRandomNo(maxWidth),
             y: getRandomNo(maxHeight),
             radious: getRandomNo(maxRadious),
-            color: allowedColors[Math.floor(Math.random() * allowedColors.length)]
+            color: constants.allowedColors[Math.floor(Math.random() * constants.allowedColors.length)]
         });
     }
 }

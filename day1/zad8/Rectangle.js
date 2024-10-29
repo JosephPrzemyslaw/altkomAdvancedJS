@@ -1,4 +1,5 @@
 import { getRandomNo } from "./common.js";
+import constants from "./constants.js";
 
 export class Rectangle {
     constructor({ctx, x, y, width, height, color}) {
@@ -18,7 +19,6 @@ export class Rectangle {
     }
     static getRandom(ctx, maxWidth, maxHeight) {
         const maxSize = 50;
-        const allowedColors = ["blue", "orange", "green", "Tomato", "MediumSeaGreen", "Violet"];
 
         return new Rectangle({
             ctx,
@@ -26,7 +26,7 @@ export class Rectangle {
             y: getRandomNo(maxHeight),
             width: getRandomNo(maxSize),
             height: getRandomNo(maxSize),
-            color: allowedColors[Math.floor(Math.random() * allowedColors.length)]
+            color: constants.allowedColors[Math.floor(Math.random() * constants.allowedColors.length)]
     });
     }
 }
