@@ -1,0 +1,31 @@
+<!--
+Zaproponuj użycie web workera w celu uwolnienia się od problemu zawieszania się przegądaraki dla ostatnio omawianego kodu
+-->
+<body>
+    <!-- not recommended code but simple ! -->
+    <button onclick="alert();">Click me here</button>
+    <label for="result">Sum:
+    <input id="result"/>
+    <script>
+       function go () {
+        const MAX = 100_000; // ES2021 => https://github.com/tc39/proposal-numeric-separator const powers = [];
+        const powers = [];
+        const sums = [];
+
+        function sum() {
+            const sumOut = powers.reduce((acc, currVal) => acc += currVal, 0);
+            return sumOut;
+        }
+       
+       for (let i = 0; i < MAX; i++) {
+            powers.push(i ** 2);
+            sums.push(sum(powers));
+       }
+       
+       const resultInput = document.getElementById("result");;
+       resultInput.value = sums.at(-1); // ES2022
+    }
+    const GO_DELAY = 1000;
+    setTimeout(go, GO_DELAY);
+    </script>
+ </body>

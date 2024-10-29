@@ -1,0 +1,27 @@
+<html>
+    <body>
+        <!-- not recommended code but simple ! -->
+        <button onclick="alert();">Click me here</button>
+        <label for="result">Sum:
+        <input id="result"/>
+        <script>
+            function go () {
+                const webWorker = new Worker('sum.js')
+                webWorker.addEventListener('message', event => {
+                    const data = event.data;
+                    const result = data.result;
+                    const resultInput = document.getElementById("result");;
+                    resultInput.value = result; // ES2022
+                })
+
+                webWorker.postMessage({
+                    cmd: 'calcSum'
+                })
+            }
+
+            const GO_DELAY = 1000;
+            setTimeout(go, GO_DELAY);
+        </script>
+        <script type="module" src="sum.js"></script>
+    </body>
+</html>
