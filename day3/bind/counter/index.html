@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .counter {
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        const COUNTER_NO = 20;
+
+        class DemoCounter {
+            #html;
+            #btn;
+            #input;
+            #notAddedYet = true;
+            #handleClick;
+            #intervalId;
+
+            constructor() {
+                // this.#handleClick = () => this.#updateCounter();
+                this.#handleClick = this.#updateCounter.bind(this);
+                this.#generateHTML();
+                this.#setListeners();
+                this.#setRandomClick();
+            }
+
+            append() {
+                if (this.#notAddedYet) {
+                    document.body.append(this.#html);
+                    this.#notAddedYet = false;
+                }
+            }
+
+            #setRandomClick() {
+                clearInterval(this.#intervalId);
+
+                const randmoDelay = Math.random() * 1000;
+                this.#intervalId = setInterval(() => this.#btn.click(), randmoDelay);
+            }
+
+            #generateHTML() {
+                const wrapper = document.createElement("div");
+                this.#input = document.createElement("input");
+                this.#btn = document.createElement("button");
+
+                wrapper.classList.add("counter");
+                this.#btn.textContent = "+";
+                this.#input.value = 0;
+                wrapper.append(this.#input);
+                wrapper.append(this.#btn);
+                this.#html = wrapper;
+            }
+
+            #setListeners() {
+                this.#btn.removeEventListener("click", this.#handleClick);
+                this.#btn.addEventListener("click", this.#handleClick);
+            }
+
+            #updateCounter() {
+                this.#input.value = +this.#input.value + 1;
+            }
+        }
+
+        new Array(COUNTER_NO).fill().map(() => new DemoCounter().append())
+    </script>
+</body>
+</html>
